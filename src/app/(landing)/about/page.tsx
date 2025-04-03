@@ -1,4 +1,3 @@
-// Import the components from the components directory
 import Introduction from "@/components/About/Introduction";
 import MissionStatement from "@/components/About/MissionStatement";
 import TeamMembers from "@/components/About/TeamMembers";
