@@ -1,7 +1,8 @@
 "use client";
 
+import { Brain, Lock } from "lucide-react";
 import { motion } from "motion/react";
-
+import Icon from "../Icon";
 const FeaturesSection = () => {
   return (
     <motion.section
@@ -50,58 +51,22 @@ const FeaturesSection = () => {
       >
         {[
           {
-            icon: (
-              <svg
-                width="60"
-                height="51"
-                viewBox="0 0 60 51"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect width="60" height="24" rx="12" fill="#FF333D" />
-                <rect y="27" width="60" height="24" rx="12" fill="#FF333D" />
-              </svg>
-            ),
+            icon: <Icon className="w-6 h-6 fill-white" />,
             title: "Universal Integration",
+            bgColor: "bg-[#FF333D]",
             description:
               "Connect Bend to every aspect of your life—banking, fitness trackers, smart home, calendars, and more.",
           },
           {
-            icon: (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="12" cy="12" r="12" fill="white" />
-              </svg>
-            ),
-            bgColor: "bg-[#FF56A9]",
+            icon: <Brain className="w-6 h-6 text-white" />,
+            bgColor: "bg-[#6C40FA]",
             title: "Personalized Intelligence",
             description:
               "Bend learns your habits, preferences, and goals to provide tailored recommendations and automate routine tasks.",
           },
           {
-            icon: (
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 2L22 12L12 22L2 12L12 2Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  fill="none"
-                />
-                <circle cx="12" cy="12" r="4" fill="white" />
-              </svg>
-            ),
-            bgColor: "bg-[#56C1FF]",
+            icon: <Lock className="w-6 h-6 text-white" />,
+            bgColor: "bg-[#20EDC5]/70",
             title: "Privacy-First Design",
             description:
               "Your data stays yours with end-to-end encryption and granular control over what information Bend can access.",

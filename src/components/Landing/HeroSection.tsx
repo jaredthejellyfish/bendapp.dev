@@ -2,6 +2,7 @@
 
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -75,16 +76,16 @@ const HeroSection = () => {
         className="flex flex-col sm:flex-row gap-4 sm:gap-8"
       >
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button className="bg-[#FF333D] text-white hover:bg-[#FF333D]/90 px-8 py-4 text-lg font-medium rounded-md border-0 transition-all hover:shadow-lg hover:shadow-[#FF333D]/20 relative z-10 backdrop-blur-sm">
+          <Button className="bg-[#FF333D] text-white hover:bg-[#FF333D]/90 text-lg font-medium py-6 px-7 rounded-md border-0 transition-all hover:shadow-lg hover:shadow-[#FF333D]/20 relative z-10 backdrop-blur-sm">
             Get Started
           </Button>
         </motion.div>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             variant="outline"
-            className="bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50 px-8 py-4 text-lg font-medium rounded-md transition-all backdrop-blur-sm"
+            className="bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50 text-lg font-medium rounded-md transition-all backdrop-blur-sm py-6 px-7 "
           >
-            Learn More
+            <Link href="/about">Learn More</Link>
           </Button>
         </motion.div>
       </motion.div>
