@@ -4,7 +4,7 @@ import TestimonialsSection from "@/components/Landing/TestimonialsSection";
 import UnfuckYourLife from "@/components/Landing/UnfuckYourLife";
 
 export const metadata = {
-  title: "Bend",
+  title: "Bend | Home",
   description: "Bend is not just a personal assistant, it's a way of life.",
 };
 

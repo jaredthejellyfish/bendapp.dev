@@ -3,6 +3,11 @@ import ContactForm from "@/components/Contact/ContactForm";
 import ContactInfo from "@/components/Contact/ContactInfo";
 import FAQ from "@/components/Contact/FAQ";
 
+export const metadata = {
+  title: "Bend | Contact",
+  description: "Contact Bend, if you need help we're here for you.",
+};
+
 export default function Contact() {
   return (
     <main>

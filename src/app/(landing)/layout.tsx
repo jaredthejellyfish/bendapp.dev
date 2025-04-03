@@ -2,6 +2,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingElements from "@/components/Landing/FloatingElements";
 
+export const metadata = {
+  title: "Bend",
+  description: "Bend is not just a personal assistant, it's a way of life.",
+};
+
 export default function LandingLayout({
   children,
 }: {

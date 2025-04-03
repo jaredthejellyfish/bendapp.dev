@@ -7,6 +7,12 @@ import CompanyValues from "@/components/About/CompanyValues";
 import AchievementStats from "@/components/About/AchievementStats";
 import ContactCTA from "@/components/About/ContactCTA";
 
+export const metadata = {
+  title: "Bend | About",
+  description:
+    "About Bend, the personal assistant that helps you get things done.",
+};
+
 export default function About() {
   return (
     <main>
