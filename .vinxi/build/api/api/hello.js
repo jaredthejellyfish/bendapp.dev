@@ -1,1 +1,0 @@
-import{a as e}from"./assets/index-BoxYSWyS.js";import{json as o}from"@tanstack/start-client-core";import"@tanstack/start-server-core";const p=e("/api/hello")({GET:({request:r,params:t})=>o({message:'Hello "/api/hello"!'})});export{p as APIRoute};
