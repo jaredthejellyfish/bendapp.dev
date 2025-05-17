@@ -1,38 +1,15 @@
-# Welcome to Remix!
+# web
 
-- [Remix Docs](https://remix.run/docs)
+To install dependencies:
 
-## Development
-
-From your terminal:
-
-```sh
-npm run dev
+```bash
+bun install
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+To run:
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+```bash
+bun run index.ts
 ```
 
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/server`
-- `build/client`
+This project was created using `bun init` in bun v1.2.7. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

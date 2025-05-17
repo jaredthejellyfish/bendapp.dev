@@ -1,0 +1,29 @@
+{
+  "_index-BoxYSWyS.js": {
+    "file": "assets/index-BoxYSWyS.js",
+    "name": "index",
+    "dynamicImports": [
+      "app/routes/api/hello.ts?pick=APIRoute",
+      "app/routes/api/hello.ts?pick=APIRoute"
+    ]
+  },
+  "app/routes/api/hello.ts?pick=APIRoute": {
+    "file": "hello.js",
+    "name": "hello",
+    "src": "app/routes/api/hello.ts?pick=APIRoute",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-BoxYSWyS.js"
+    ]
+  },
+  "virtual:$vinxi/handler/api": {
+    "file": "api.js",
+    "name": "api",
+    "src": "virtual:$vinxi/handler/api",
+    "isEntry": true,
+    "imports": [
+      "_index-BoxYSWyS.js"
+    ]
+  }
+}
