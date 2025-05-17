@@ -5,6 +5,7 @@ import { Input } from "~/components/ui/input";
 import { Checkbox } from "~/components/ui/checkbox";
 import { Label } from "~/components/ui/label";
 import { Link } from "@tanstack/react-router";
+import { signUpFn } from "~/serverFn/signUpUser";
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({
@@ -13,8 +14,8 @@ const SignUpForm = () => {
     email: "",
     password: "",
     confirmPassword: "",
-    acceptTerms: false,
-    acceptPrivacy: false,
+    termsAccepted: false,
+    privacyAccepted: false,
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,15 +33,9 @@ const SignUpForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle sign-up logic here
-    console.log(formData);
-  };
-
   return (
     <div className="bg-card p-8 rounded-lg">
-      <form onSubmit={handleSubmit}>
+      <form action={signUpFn.url} method="POST" encType="multipart/form-data">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
             <Label
@@ -138,13 +133,14 @@ const SignUpForm = () => {
         <div className="space-y-3 mb-6">
           <div className="flex items-center space-x-2">
             <Checkbox
-              id="acceptTerms"
-              checked={formData.acceptTerms}
-              onCheckedChange={(checked) =>
-                { handleCheckboxChange("acceptTerms", checked as boolean); }
-              }
+              id="termsAccepted"
+              name="termsAccepted"
+              checked={formData.termsAccepted}
+              onCheckedChange={(checked) => {
+                handleCheckboxChange("termsAccepted", checked as boolean);
+              }}
             />
-            <Label htmlFor="acceptTerms" className="text-sm text-foreground">
+            <Label htmlFor="termsAccepted" className="text-sm text-foreground">
               I accept the{" "}
               <Link to="/terms" className="text-accent hover:underline">
                 Terms of Service
@@ -154,13 +150,17 @@ const SignUpForm = () => {
 
           <div className="flex items-center space-x-2">
             <Checkbox
-              id="acceptPrivacy"
-              checked={formData.acceptPrivacy}
-              onCheckedChange={(checked) =>
-                { handleCheckboxChange("acceptPrivacy", checked as boolean); }
-              }
+              id="privacyAccepted"
+              name="privacyAccepted"
+              checked={formData.privacyAccepted}
+              onCheckedChange={(checked) => {
+                handleCheckboxChange("privacyAccepted", checked as boolean);
+              }}
             />
-            <Label htmlFor="acceptPrivacy" className="text-sm text-foreground">
+            <Label
+              htmlFor="privacyAccepted"
+              className="text-sm text-foreground"
+            >
               I accept the{" "}
               <Link to="/privacy" className="text-accent hover:underline">
                 Privacy Policy
@@ -172,7 +172,7 @@ const SignUpForm = () => {
         <Button
           type="submit"
           className="w-full bg-accent hover:bg-accent/90 text-white"
-          disabled={!formData.acceptTerms || !formData.acceptPrivacy}
+          disabled={!formData.termsAccepted || !formData.privacyAccepted}
         >
           Create Account
         </Button>

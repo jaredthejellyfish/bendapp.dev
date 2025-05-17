@@ -13,6 +13,7 @@ import FloatingElements from "~/components/Landing/FloatingElements";
 import ScrollIndicator from "~/components/ScrollIndicator";
 import { seo } from "~/utils/seo";
 import NotFound from "~/components/NotFound";
+import { Toaster } from "../components/ui/sonner";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -73,6 +74,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           </div>
         </div>
         <Scripts />
+        <Toaster />
       </body>
     </html>
   );

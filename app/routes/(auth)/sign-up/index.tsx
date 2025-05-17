@@ -3,7 +3,7 @@ import SignUpForm from "~/components/SignUp/SignUpForm";
 import SignUpHero from "~/components/SignUp/SignUpHero";
 import AlternativeOptions from "~/components/SignUp/AlternativeOptions";
 
-export const Route = createFileRoute("/(auth)/sign-up")({
+export const Route = createFileRoute("/(auth)/sign-up/")({
   component: RouteComponent,
   head: () => ({
     meta: [

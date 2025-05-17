@@ -1,5 +1,6 @@
+import { signInFn } from "~/serverFn/signInUser";
 import { Link } from "@tanstack/react-router";
-import React from "react";
+
 import { useState } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -8,21 +9,17 @@ const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle sign-in logic here
-    console.log({ email, password });
-  };
-
   return (
     <div className="bg-card p-8 rounded-lg w-sm sm:w-md">
-      <form onSubmit={handleSubmit}>
+      <form action={signInFn.url} method="POST" encType="multipart/form-data">
         <div className="mb-4">
           <Input
             id="email"
             type="email"
             value={email}
-            onChange={(e) => { setEmail(e.target.value); }}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
             placeholder="tyler.almendra@gmail.com"
             required
             className="w-full bg-background text-foreground border-border"
@@ -34,7 +31,9 @@ const SignInForm = () => {
             id="password"
             type="password"
             value={password}
-            onChange={(e) => { setPassword(e.target.value); }}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
             placeholder="••••••••••"
             required
             className="w-full bg-background text-foreground border-border"

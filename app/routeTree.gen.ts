@@ -12,29 +12,18 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LandingLayoutRouteImport } from './routes/_landingLayout/route'
-import { Route as authSignUpImport } from './routes/(auth)/sign-up'
-import { Route as authSignInImport } from './routes/(auth)/sign-in'
 import { Route as authForgotPasswordImport } from './routes/(auth)/forgot-password'
 import { Route as LandingLayoutlandingIndexImport } from './routes/_landingLayout/(landing)/index'
+import { Route as authSignUpIndexImport } from './routes/(auth)/sign-up/index'
+import { Route as authSignInIndexImport } from './routes/(auth)/sign-in/index'
 import { Route as LandingLayoutlandingContactImport } from './routes/_landingLayout/(landing)/contact'
 import { Route as LandingLayoutlandingAboutImport } from './routes/_landingLayout/(landing)/about'
+import { Route as authSignUpSuccessImport } from './routes/(auth)/sign-up/success'
 
 // Create/Update Routes
 
 const LandingLayoutRouteRoute = LandingLayoutRouteImport.update({
   id: '/_landingLayout',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const authSignUpRoute = authSignUpImport.update({
-  id: '/(auth)/sign-up',
-  path: '/sign-up',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const authSignInRoute = authSignInImport.update({
-  id: '/(auth)/sign-in',
-  path: '/sign-in',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -50,6 +39,18 @@ const LandingLayoutlandingIndexRoute = LandingLayoutlandingIndexImport.update({
   getParentRoute: () => LandingLayoutRouteRoute,
 } as any)
 
+const authSignUpIndexRoute = authSignUpIndexImport.update({
+  id: '/(auth)/sign-up/',
+  path: '/sign-up/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const authSignInIndexRoute = authSignInIndexImport.update({
+  id: '/(auth)/sign-in/',
+  path: '/sign-in/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const LandingLayoutlandingContactRoute =
   LandingLayoutlandingContactImport.update({
     id: '/(landing)/contact',
@@ -61,6 +62,12 @@ const LandingLayoutlandingAboutRoute = LandingLayoutlandingAboutImport.update({
   id: '/(landing)/about',
   path: '/about',
   getParentRoute: () => LandingLayoutRouteRoute,
+} as any)
+
+const authSignUpSuccessRoute = authSignUpSuccessImport.update({
+  id: '/(auth)/sign-up/success',
+  path: '/sign-up/success',
+  getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
@@ -81,18 +88,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authForgotPasswordImport
       parentRoute: typeof rootRoute
     }
-    '/(auth)/sign-in': {
-      id: '/(auth)/sign-in'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof authSignInImport
-      parentRoute: typeof rootRoute
-    }
-    '/(auth)/sign-up': {
-      id: '/(auth)/sign-up'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof authSignUpImport
+    '/(auth)/sign-up/success': {
+      id: '/(auth)/sign-up/success'
+      path: '/sign-up/success'
+      fullPath: '/sign-up/success'
+      preLoaderRoute: typeof authSignUpSuccessImport
       parentRoute: typeof rootRoute
     }
     '/_landingLayout/(landing)/about': {
@@ -108,6 +108,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/contact'
       preLoaderRoute: typeof LandingLayoutlandingContactImport
       parentRoute: typeof LandingLayoutRouteImport
+    }
+    '/(auth)/sign-in/': {
+      id: '/(auth)/sign-in/'
+      path: '/sign-in'
+      fullPath: '/sign-in'
+      preLoaderRoute: typeof authSignInIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/(auth)/sign-up/': {
+      id: '/(auth)/sign-up/'
+      path: '/sign-up'
+      fullPath: '/sign-up'
+      preLoaderRoute: typeof authSignUpIndexImport
+      parentRoute: typeof rootRoute
     }
     '/_landingLayout/(landing)/': {
       id: '/_landingLayout/(landing)/'
@@ -139,19 +153,21 @@ const LandingLayoutRouteRouteWithChildren =
 export interface FileRoutesByFullPath {
   '': typeof LandingLayoutRouteRouteWithChildren
   '/forgot-password': typeof authForgotPasswordRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-up': typeof authSignUpRoute
+  '/sign-up/success': typeof authSignUpSuccessRoute
   '/about': typeof LandingLayoutlandingAboutRoute
   '/contact': typeof LandingLayoutlandingContactRoute
+  '/sign-in': typeof authSignInIndexRoute
+  '/sign-up': typeof authSignUpIndexRoute
   '/': typeof LandingLayoutlandingIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/forgot-password': typeof authForgotPasswordRoute
-  '/sign-in': typeof authSignInRoute
-  '/sign-up': typeof authSignUpRoute
+  '/sign-up/success': typeof authSignUpSuccessRoute
   '/about': typeof LandingLayoutlandingAboutRoute
   '/contact': typeof LandingLayoutlandingContactRoute
+  '/sign-in': typeof authSignInIndexRoute
+  '/sign-up': typeof authSignUpIndexRoute
   '/': typeof LandingLayoutlandingIndexRoute
 }
 
@@ -159,10 +175,11 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/_landingLayout': typeof LandingLayoutRouteRouteWithChildren
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
-  '/(auth)/sign-in': typeof authSignInRoute
-  '/(auth)/sign-up': typeof authSignUpRoute
+  '/(auth)/sign-up/success': typeof authSignUpSuccessRoute
   '/_landingLayout/(landing)/about': typeof LandingLayoutlandingAboutRoute
   '/_landingLayout/(landing)/contact': typeof LandingLayoutlandingContactRoute
+  '/(auth)/sign-in/': typeof authSignInIndexRoute
+  '/(auth)/sign-up/': typeof authSignUpIndexRoute
   '/_landingLayout/(landing)/': typeof LandingLayoutlandingIndexRoute
 }
 
@@ -171,21 +188,30 @@ export interface FileRouteTypes {
   fullPaths:
     | ''
     | '/forgot-password'
-    | '/sign-in'
-    | '/sign-up'
+    | '/sign-up/success'
     | '/about'
     | '/contact'
+    | '/sign-in'
+    | '/sign-up'
     | '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/forgot-password' | '/sign-in' | '/sign-up' | '/about' | '/contact' | '/'
+  to:
+    | '/forgot-password'
+    | '/sign-up/success'
+    | '/about'
+    | '/contact'
+    | '/sign-in'
+    | '/sign-up'
+    | '/'
   id:
     | '__root__'
     | '/_landingLayout'
     | '/(auth)/forgot-password'
-    | '/(auth)/sign-in'
-    | '/(auth)/sign-up'
+    | '/(auth)/sign-up/success'
     | '/_landingLayout/(landing)/about'
     | '/_landingLayout/(landing)/contact'
+    | '/(auth)/sign-in/'
+    | '/(auth)/sign-up/'
     | '/_landingLayout/(landing)/'
   fileRoutesById: FileRoutesById
 }
@@ -193,15 +219,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   LandingLayoutRouteRoute: typeof LandingLayoutRouteRouteWithChildren
   authForgotPasswordRoute: typeof authForgotPasswordRoute
-  authSignInRoute: typeof authSignInRoute
-  authSignUpRoute: typeof authSignUpRoute
+  authSignUpSuccessRoute: typeof authSignUpSuccessRoute
+  authSignInIndexRoute: typeof authSignInIndexRoute
+  authSignUpIndexRoute: typeof authSignUpIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   LandingLayoutRouteRoute: LandingLayoutRouteRouteWithChildren,
   authForgotPasswordRoute: authForgotPasswordRoute,
-  authSignInRoute: authSignInRoute,
-  authSignUpRoute: authSignUpRoute,
+  authSignUpSuccessRoute: authSignUpSuccessRoute,
+  authSignInIndexRoute: authSignInIndexRoute,
+  authSignUpIndexRoute: authSignUpIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -216,8 +244,9 @@ export const routeTree = rootRoute
       "children": [
         "/_landingLayout",
         "/(auth)/forgot-password",
-        "/(auth)/sign-in",
-        "/(auth)/sign-up"
+        "/(auth)/sign-up/success",
+        "/(auth)/sign-in/",
+        "/(auth)/sign-up/"
       ]
     },
     "/_landingLayout": {
@@ -231,11 +260,8 @@ export const routeTree = rootRoute
     "/(auth)/forgot-password": {
       "filePath": "(auth)/forgot-password.tsx"
     },
-    "/(auth)/sign-in": {
-      "filePath": "(auth)/sign-in.tsx"
-    },
-    "/(auth)/sign-up": {
-      "filePath": "(auth)/sign-up.tsx"
+    "/(auth)/sign-up/success": {
+      "filePath": "(auth)/sign-up/success.tsx"
     },
     "/_landingLayout/(landing)/about": {
       "filePath": "_landingLayout/(landing)/about.tsx",
@@ -244,6 +270,12 @@ export const routeTree = rootRoute
     "/_landingLayout/(landing)/contact": {
       "filePath": "_landingLayout/(landing)/contact.tsx",
       "parent": "/_landingLayout"
+    },
+    "/(auth)/sign-in/": {
+      "filePath": "(auth)/sign-in/index.tsx"
+    },
+    "/(auth)/sign-up/": {
+      "filePath": "(auth)/sign-up/index.tsx"
     },
     "/_landingLayout/(landing)/": {
       "filePath": "_landingLayout/(landing)/index.tsx",
