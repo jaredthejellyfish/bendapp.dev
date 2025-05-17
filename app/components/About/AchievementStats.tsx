@@ -55,7 +55,7 @@ const AchievementStats = () => {
       }
     });
 
-    return () => unsubscribe();
+    return () => { unsubscribe(); };
   }, [scrollYProgress]);
 
   // Animated counter component
@@ -82,7 +82,7 @@ const AchievementStats = () => {
 
       rafId = requestAnimationFrame(animate);
 
-      return () => cancelAnimationFrame(rafId);
+      return () => { cancelAnimationFrame(rafId); };
     }, [stat.value, stat.duration]);
 
     return (

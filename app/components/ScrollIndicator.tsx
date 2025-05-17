@@ -17,14 +17,16 @@ const ScrollIndicator = () => {
     window.addEventListener("scroll", updateScrollProgress);
     updateScrollProgress(); // Initialize on mount
 
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+    };
   }, []);
 
   return (
     <div className="fixed top-0 left-0 w-full z-50">
       <div
         className="h-1 bg-[#FF333D] transition-all duration-300 ease-out"
-        style={{ width: `${scrollProgress}%` }}
+        style={{ width: `${scrollProgress.toString()}%` }}
       />
     </div>
   );

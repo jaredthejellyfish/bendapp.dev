@@ -1,5 +1,6 @@
 "use client";
 
+import { Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 
 type ContactMethod = {
@@ -138,12 +139,12 @@ const ContactInfo = () => {
                 <div>
                   <h3 className="text-white font-medium">{method.title}</h3>
                   {method.link ? (
-                    <a
-                      href={method.link}
+                    <Link
+                      to={method.link}
                       className="text-white/70 hover:text-[#FF333D] transition-colors"
                     >
                       {method.value}
-                    </a>
+                    </Link>
                   ) : (
                     <p className="text-white/70">{method.value}</p>
                   )}

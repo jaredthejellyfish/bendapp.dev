@@ -42,7 +42,7 @@ const HeroSection = () => {
           className="text-white text-5xl sm:text-7xl md:text-[100px] font-bold leading-tight tracking-tight"
         >
           <span className="relative">
-            Bend Better.
+            <span className="text-[#FF333D]">Bend</span> Better.
             <motion.span
               initial={{ width: 0 }}
               animate={{ width: "50%" }}
@@ -76,13 +76,17 @@ const HeroSection = () => {
         className="flex flex-col sm:flex-row gap-4 sm:gap-8"
       >
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-          <Button className="bg-[#FF333D] text-white hover:bg-[#FF333D]/90 text-lg font-medium py-6 px-7 rounded-md border-0 transition-all hover:shadow-lg hover:shadow-[#FF333D]/20 relative z-10 backdrop-blur-sm">
-            Get Started
+          <Button
+            asChild
+            className="bg-[#FF333D] text-white hover:bg-[#FF333D]/90 text-lg font-medium py-6 px-7 rounded-md border-0 transition-all hover:shadow-lg hover:shadow-[#FF333D]/20 relative z-10 backdrop-blur-sm"
+          >
+            <Link to="/sign-in">Get Started</Link>
           </Button>
         </motion.div>
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             variant="outline"
+            asChild
             className="bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50 text-lg font-medium rounded-md transition-all backdrop-blur-sm py-6 px-7 "
           >
             <Link to="/about">Learn More</Link>

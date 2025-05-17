@@ -1,11 +1,12 @@
-import { createFileRoute, useRouterState } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import HeroSection from "~/components/Landing/HeroSection";
 import FeaturesSection from "~/components/Landing/FeaturesSection";
 import TestimonialsSection from "~/components/Landing/TestimonialsSection";
 import UnfuckYourLife from "~/components/Landing/UnfuckYourLife";
-import { seo } from "../utils/seo";
 
-export const Route = createFileRoute("/")({
+// The path here was updated in the previous turn. If you reverted it,
+// it should be: "/_landingLayout/(landing)/"
+export const Route = createFileRoute("/_landingLayout/(landing)/")({
   component: Home,
   head: () => ({
     meta: [

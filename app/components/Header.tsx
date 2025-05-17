@@ -5,6 +5,7 @@ import Logo from "./Logo";
 import { Link } from "@tanstack/react-router";
 import { cn } from "~/lib/utils";
 import { useRouterState } from "@tanstack/react-router";
+import { isNotFound } from "@tanstack/react-router";
 
 const links = [
   { label: "Home", href: "/" },
@@ -15,6 +16,11 @@ const links = [
 const Header = () => {
   const router = useRouterState();
   const pathname = router.location.pathname;
+
+  if (isNotFound(router.matches[0])) {
+    return null;
+  }
+
   return (
     <motion.header
       initial="hidden"

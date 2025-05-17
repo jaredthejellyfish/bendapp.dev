@@ -74,7 +74,7 @@ const FAQ = () => {
               className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden"
             >
               <button
-                onClick={() => toggleFAQ(index)}
+                onClick={() => { toggleFAQ(index); }}
                 className="w-full flex justify-between items-center p-6 text-left"
               >
                 <span className="text-white font-medium text-lg">

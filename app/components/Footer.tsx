@@ -9,7 +9,7 @@ const Footer = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.5 }}
-      className="mt-32 border-t border-white/10 pt-8 pb-8"
+      className="mt-12 border-t border-white/10 pt-8 pb-8"
     >
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <motion.div

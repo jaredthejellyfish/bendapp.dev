@@ -4,7 +4,9 @@ import ContactHero from "~/components/Contact/ContactHero";
 import FAQ from "~/components/Contact/FAQ";
 import ContactInfo from "~/components/Contact/ContactInfo";
 
-export const Route = createFileRoute("/contact")({
+// The path here was updated in the previous turn. If you reverted it,
+// it should be: "/_landingLayout/(landing)/contact"
+export const Route = createFileRoute("/_landingLayout/(landing)/contact")({
   component: RouteComponent,
   head: () => ({
     meta: [

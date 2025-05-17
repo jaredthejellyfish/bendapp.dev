@@ -69,7 +69,7 @@ const TestimonialsSection = () => {
             className="bg-[#1A1A1A] p-8 rounded-lg border border-white/10"
           >
             <div className="flex gap-4 mb-6">
-              {[...Array(5)].map((_, i) => (
+              {Array.from({ length: 5 }).map((_, i) => (
                 <motion.svg
                   key={i}
                   initial={{ opacity: 0, scale: 0 }}

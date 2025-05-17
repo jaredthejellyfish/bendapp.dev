@@ -129,7 +129,7 @@ const ContactForm = () => {
                 as possible.
               </p>
               <Button
-                onClick={() => setSubmitted(false)}
+                onClick={() => { setSubmitted(false); }}
                 className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
               >
                 Send Another Message
