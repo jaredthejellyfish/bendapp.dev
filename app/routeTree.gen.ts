@@ -11,62 +11,48 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as LandingLayoutRouteImport } from './routes/_landingLayout/route'
-import { Route as authForgotPasswordImport } from './routes/(auth)/forgot-password'
-import { Route as LandingLayoutlandingIndexImport } from './routes/_landingLayout/(landing)/index'
-import { Route as authSignUpIndexImport } from './routes/(auth)/sign-up/index'
-import { Route as authSignInIndexImport } from './routes/(auth)/sign-in/index'
-import { Route as LandingLayoutlandingContactImport } from './routes/_landingLayout/(landing)/contact'
-import { Route as LandingLayoutlandingAboutImport } from './routes/_landingLayout/(landing)/about'
-import { Route as authSignUpSuccessImport } from './routes/(auth)/sign-up/success'
+import { Route as ChatIndexImport } from './routes/chat/index'
+import { Route as landingIndexImport } from './routes/(landing)/index'
+import { Route as ChatIdImport } from './routes/chat/$id'
+import { Route as AuthPathnameImport } from './routes/auth/$pathname'
+import { Route as landingContactImport } from './routes/(landing)/contact'
+import { Route as landingAboutImport } from './routes/(landing)/about'
 
 // Create/Update Routes
 
-const LandingLayoutRouteRoute = LandingLayoutRouteImport.update({
-  id: '/_landingLayout',
+const ChatIndexRoute = ChatIndexImport.update({
+  id: '/chat/',
+  path: '/chat/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const authForgotPasswordRoute = authForgotPasswordImport.update({
-  id: '/(auth)/forgot-password',
-  path: '/forgot-password',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const LandingLayoutlandingIndexRoute = LandingLayoutlandingIndexImport.update({
+const landingIndexRoute = landingIndexImport.update({
   id: '/(landing)/',
   path: '/',
-  getParentRoute: () => LandingLayoutRouteRoute,
-} as any)
-
-const authSignUpIndexRoute = authSignUpIndexImport.update({
-  id: '/(auth)/sign-up/',
-  path: '/sign-up/',
   getParentRoute: () => rootRoute,
 } as any)
 
-const authSignInIndexRoute = authSignInIndexImport.update({
-  id: '/(auth)/sign-in/',
-  path: '/sign-in/',
+const ChatIdRoute = ChatIdImport.update({
+  id: '/chat/$id',
+  path: '/chat/$id',
   getParentRoute: () => rootRoute,
 } as any)
 
-const LandingLayoutlandingContactRoute =
-  LandingLayoutlandingContactImport.update({
-    id: '/(landing)/contact',
-    path: '/contact',
-    getParentRoute: () => LandingLayoutRouteRoute,
-  } as any)
+const AuthPathnameRoute = AuthPathnameImport.update({
+  id: '/auth/$pathname',
+  path: '/auth/$pathname',
+  getParentRoute: () => rootRoute,
+} as any)
 
-const LandingLayoutlandingAboutRoute = LandingLayoutlandingAboutImport.update({
+const landingContactRoute = landingContactImport.update({
+  id: '/(landing)/contact',
+  path: '/contact',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const landingAboutRoute = landingAboutImport.update({
   id: '/(landing)/about',
   path: '/about',
-  getParentRoute: () => LandingLayoutRouteRoute,
-} as any)
-
-const authSignUpSuccessRoute = authSignUpSuccessImport.update({
-  id: '/(auth)/sign-up/success',
-  path: '/sign-up/success',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -74,162 +60,119 @@ const authSignUpSuccessRoute = authSignUpSuccessImport.update({
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_landingLayout': {
-      id: '/_landingLayout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof LandingLayoutRouteImport
-      parentRoute: typeof rootRoute
-    }
-    '/(auth)/forgot-password': {
-      id: '/(auth)/forgot-password'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof authForgotPasswordImport
-      parentRoute: typeof rootRoute
-    }
-    '/(auth)/sign-up/success': {
-      id: '/(auth)/sign-up/success'
-      path: '/sign-up/success'
-      fullPath: '/sign-up/success'
-      preLoaderRoute: typeof authSignUpSuccessImport
-      parentRoute: typeof rootRoute
-    }
-    '/_landingLayout/(landing)/about': {
-      id: '/_landingLayout/(landing)/about'
+    '/(landing)/about': {
+      id: '/(landing)/about'
       path: '/about'
       fullPath: '/about'
-      preLoaderRoute: typeof LandingLayoutlandingAboutImport
-      parentRoute: typeof LandingLayoutRouteImport
+      preLoaderRoute: typeof landingAboutImport
+      parentRoute: typeof rootRoute
     }
-    '/_landingLayout/(landing)/contact': {
-      id: '/_landingLayout/(landing)/contact'
+    '/(landing)/contact': {
+      id: '/(landing)/contact'
       path: '/contact'
       fullPath: '/contact'
-      preLoaderRoute: typeof LandingLayoutlandingContactImport
-      parentRoute: typeof LandingLayoutRouteImport
-    }
-    '/(auth)/sign-in/': {
-      id: '/(auth)/sign-in/'
-      path: '/sign-in'
-      fullPath: '/sign-in'
-      preLoaderRoute: typeof authSignInIndexImport
+      preLoaderRoute: typeof landingContactImport
       parentRoute: typeof rootRoute
     }
-    '/(auth)/sign-up/': {
-      id: '/(auth)/sign-up/'
-      path: '/sign-up'
-      fullPath: '/sign-up'
-      preLoaderRoute: typeof authSignUpIndexImport
+    '/auth/$pathname': {
+      id: '/auth/$pathname'
+      path: '/auth/$pathname'
+      fullPath: '/auth/$pathname'
+      preLoaderRoute: typeof AuthPathnameImport
       parentRoute: typeof rootRoute
     }
-    '/_landingLayout/(landing)/': {
-      id: '/_landingLayout/(landing)/'
+    '/chat/$id': {
+      id: '/chat/$id'
+      path: '/chat/$id'
+      fullPath: '/chat/$id'
+      preLoaderRoute: typeof ChatIdImport
+      parentRoute: typeof rootRoute
+    }
+    '/(landing)/': {
+      id: '/(landing)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof LandingLayoutlandingIndexImport
-      parentRoute: typeof LandingLayoutRouteImport
+      preLoaderRoute: typeof landingIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/chat/': {
+      id: '/chat/'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof ChatIndexImport
+      parentRoute: typeof rootRoute
     }
   }
 }
 
 // Create and export the route tree
 
-interface LandingLayoutRouteRouteChildren {
-  LandingLayoutlandingAboutRoute: typeof LandingLayoutlandingAboutRoute
-  LandingLayoutlandingContactRoute: typeof LandingLayoutlandingContactRoute
-  LandingLayoutlandingIndexRoute: typeof LandingLayoutlandingIndexRoute
-}
-
-const LandingLayoutRouteRouteChildren: LandingLayoutRouteRouteChildren = {
-  LandingLayoutlandingAboutRoute: LandingLayoutlandingAboutRoute,
-  LandingLayoutlandingContactRoute: LandingLayoutlandingContactRoute,
-  LandingLayoutlandingIndexRoute: LandingLayoutlandingIndexRoute,
-}
-
-const LandingLayoutRouteRouteWithChildren =
-  LandingLayoutRouteRoute._addFileChildren(LandingLayoutRouteRouteChildren)
-
 export interface FileRoutesByFullPath {
-  '': typeof LandingLayoutRouteRouteWithChildren
-  '/forgot-password': typeof authForgotPasswordRoute
-  '/sign-up/success': typeof authSignUpSuccessRoute
-  '/about': typeof LandingLayoutlandingAboutRoute
-  '/contact': typeof LandingLayoutlandingContactRoute
-  '/sign-in': typeof authSignInIndexRoute
-  '/sign-up': typeof authSignUpIndexRoute
-  '/': typeof LandingLayoutlandingIndexRoute
+  '/about': typeof landingAboutRoute
+  '/contact': typeof landingContactRoute
+  '/auth/$pathname': typeof AuthPathnameRoute
+  '/chat/$id': typeof ChatIdRoute
+  '/': typeof landingIndexRoute
+  '/chat': typeof ChatIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/forgot-password': typeof authForgotPasswordRoute
-  '/sign-up/success': typeof authSignUpSuccessRoute
-  '/about': typeof LandingLayoutlandingAboutRoute
-  '/contact': typeof LandingLayoutlandingContactRoute
-  '/sign-in': typeof authSignInIndexRoute
-  '/sign-up': typeof authSignUpIndexRoute
-  '/': typeof LandingLayoutlandingIndexRoute
+  '/about': typeof landingAboutRoute
+  '/contact': typeof landingContactRoute
+  '/auth/$pathname': typeof AuthPathnameRoute
+  '/chat/$id': typeof ChatIdRoute
+  '/': typeof landingIndexRoute
+  '/chat': typeof ChatIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/_landingLayout': typeof LandingLayoutRouteRouteWithChildren
-  '/(auth)/forgot-password': typeof authForgotPasswordRoute
-  '/(auth)/sign-up/success': typeof authSignUpSuccessRoute
-  '/_landingLayout/(landing)/about': typeof LandingLayoutlandingAboutRoute
-  '/_landingLayout/(landing)/contact': typeof LandingLayoutlandingContactRoute
-  '/(auth)/sign-in/': typeof authSignInIndexRoute
-  '/(auth)/sign-up/': typeof authSignUpIndexRoute
-  '/_landingLayout/(landing)/': typeof LandingLayoutlandingIndexRoute
+  '/(landing)/about': typeof landingAboutRoute
+  '/(landing)/contact': typeof landingContactRoute
+  '/auth/$pathname': typeof AuthPathnameRoute
+  '/chat/$id': typeof ChatIdRoute
+  '/(landing)/': typeof landingIndexRoute
+  '/chat/': typeof ChatIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | ''
-    | '/forgot-password'
-    | '/sign-up/success'
     | '/about'
     | '/contact'
-    | '/sign-in'
-    | '/sign-up'
+    | '/auth/$pathname'
+    | '/chat/$id'
     | '/'
+    | '/chat'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/forgot-password'
-    | '/sign-up/success'
-    | '/about'
-    | '/contact'
-    | '/sign-in'
-    | '/sign-up'
-    | '/'
+  to: '/about' | '/contact' | '/auth/$pathname' | '/chat/$id' | '/' | '/chat'
   id:
     | '__root__'
-    | '/_landingLayout'
-    | '/(auth)/forgot-password'
-    | '/(auth)/sign-up/success'
-    | '/_landingLayout/(landing)/about'
-    | '/_landingLayout/(landing)/contact'
-    | '/(auth)/sign-in/'
-    | '/(auth)/sign-up/'
-    | '/_landingLayout/(landing)/'
+    | '/(landing)/about'
+    | '/(landing)/contact'
+    | '/auth/$pathname'
+    | '/chat/$id'
+    | '/(landing)/'
+    | '/chat/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  LandingLayoutRouteRoute: typeof LandingLayoutRouteRouteWithChildren
-  authForgotPasswordRoute: typeof authForgotPasswordRoute
-  authSignUpSuccessRoute: typeof authSignUpSuccessRoute
-  authSignInIndexRoute: typeof authSignInIndexRoute
-  authSignUpIndexRoute: typeof authSignUpIndexRoute
+  landingAboutRoute: typeof landingAboutRoute
+  landingContactRoute: typeof landingContactRoute
+  AuthPathnameRoute: typeof AuthPathnameRoute
+  ChatIdRoute: typeof ChatIdRoute
+  landingIndexRoute: typeof landingIndexRoute
+  ChatIndexRoute: typeof ChatIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  LandingLayoutRouteRoute: LandingLayoutRouteRouteWithChildren,
-  authForgotPasswordRoute: authForgotPasswordRoute,
-  authSignUpSuccessRoute: authSignUpSuccessRoute,
-  authSignInIndexRoute: authSignInIndexRoute,
-  authSignUpIndexRoute: authSignUpIndexRoute,
+  landingAboutRoute: landingAboutRoute,
+  landingContactRoute: landingContactRoute,
+  AuthPathnameRoute: AuthPathnameRoute,
+  ChatIdRoute: ChatIdRoute,
+  landingIndexRoute: landingIndexRoute,
+  ChatIndexRoute: ChatIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -242,44 +185,31 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/_landingLayout",
-        "/(auth)/forgot-password",
-        "/(auth)/sign-up/success",
-        "/(auth)/sign-in/",
-        "/(auth)/sign-up/"
+        "/(landing)/about",
+        "/(landing)/contact",
+        "/auth/$pathname",
+        "/chat/$id",
+        "/(landing)/",
+        "/chat/"
       ]
     },
-    "/_landingLayout": {
-      "filePath": "_landingLayout/route.tsx",
-      "children": [
-        "/_landingLayout/(landing)/about",
-        "/_landingLayout/(landing)/contact",
-        "/_landingLayout/(landing)/"
-      ]
+    "/(landing)/about": {
+      "filePath": "(landing)/about.tsx"
     },
-    "/(auth)/forgot-password": {
-      "filePath": "(auth)/forgot-password.tsx"
+    "/(landing)/contact": {
+      "filePath": "(landing)/contact.tsx"
     },
-    "/(auth)/sign-up/success": {
-      "filePath": "(auth)/sign-up/success.tsx"
+    "/auth/$pathname": {
+      "filePath": "auth/$pathname.tsx"
     },
-    "/_landingLayout/(landing)/about": {
-      "filePath": "_landingLayout/(landing)/about.tsx",
-      "parent": "/_landingLayout"
+    "/chat/$id": {
+      "filePath": "chat/$id.tsx"
     },
-    "/_landingLayout/(landing)/contact": {
-      "filePath": "_landingLayout/(landing)/contact.tsx",
-      "parent": "/_landingLayout"
+    "/(landing)/": {
+      "filePath": "(landing)/index.tsx"
     },
-    "/(auth)/sign-in/": {
-      "filePath": "(auth)/sign-in/index.tsx"
-    },
-    "/(auth)/sign-up/": {
-      "filePath": "(auth)/sign-up/index.tsx"
-    },
-    "/_landingLayout/(landing)/": {
-      "filePath": "_landingLayout/(landing)/index.tsx",
-      "parent": "/_landingLayout"
+    "/chat/": {
+      "filePath": "chat/index.tsx"
     }
   }
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "motion/react";
 
 const TestimonialsSection = () => {
@@ -16,7 +14,7 @@ const TestimonialsSection = () => {
       <motion.div
         animate={{ opacity: [0.1, 0.3, 0.1], scale: [0.98, 1.02, 0.98] }}
         transition={{ duration: 4, repeat: Infinity }}
-        className="absolute -top-10 right-20 w-24 h-24 border border-white/10 rounded-full bg-white/5 backdrop-blur-sm hidden md:block"
+        className="absolute -top-10 right-20 w-24 h-24 border border-border/10 rounded-full bg-background/5 backdrop-blur-sm hidden md:block"
       />
 
       <motion.h2
@@ -24,7 +22,7 @@ const TestimonialsSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-white text-4xl font-bold mb-12"
+        className="text-foreground text-4xl font-bold mb-12"
       >
         What Our Users Say
       </motion.h2>
@@ -49,14 +47,14 @@ const TestimonialsSection = () => {
             name: "Jessica Davis",
             role: "Marketing Director & Mother of Two",
             initials: "JD",
-            bgColor: "bg-[#FF333D]/20",
+            bgColor: "bg-primary/20",
           },
           {
             text: "As someone juggling freelance work, personal projects, and a social life, Bend helps me stay organized without feeling overwhelmed. It's not just an app—it's peace of mind.",
             name: "Marcus Santiago",
             role: "Freelance Designer",
             initials: "MS",
-            bgColor: "bg-[#56C1FF]/20",
+            bgColor: "bg-chart-2/20",
           },
         ].map((testimonial, index) => (
           <motion.div
@@ -66,7 +64,7 @@ const TestimonialsSection = () => {
               visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
             }}
             whileHover={{ y: -5 }}
-            className="bg-[#1A1A1A] p-8 rounded-lg border border-white/10"
+            className="bg-card p-8 rounded-lg border border-border/10"
           >
             <div className="flex gap-4 mb-6">
               {Array.from({ length: 5 }).map((_, i) => (
@@ -78,25 +76,30 @@ const TestimonialsSection = () => {
                   width="20"
                   height="20"
                   viewBox="0 0 20 20"
-                  fill="#FF333D"
+                  fill="currentColor"
+                  className="text-primary"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M10 1L13 7L19 8L14.5 13L16 19L10 16L4 19L5.5 13L1 8L7 7L10 1Z" />
                 </motion.svg>
               ))}
             </div>
-            <p className="text-white/80 text-lg italic mb-6">
+            <p className="text-muted-foreground text-lg italic mb-6">
               &ldquo;{testimonial.text}&rdquo;
             </p>
             <div className="flex items-center gap-4">
               <div
-                className={`w-12 h-12 rounded-full ${testimonial.bgColor} flex items-center justify-center text-white font-bold`}
+                className={`w-12 h-12 rounded-full ${testimonial.bgColor} flex items-center justify-center text-foreground font-bold`}
               >
                 {testimonial.initials}
               </div>
               <div>
-                <h4 className="text-white font-medium">{testimonial.name}</h4>
-                <p className="text-white/60 text-sm">{testimonial.role}</p>
+                <h4 className="text-foreground font-medium">
+                  {testimonial.name}
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  {testimonial.role}
+                </p>
               </div>
             </div>
           </motion.div>

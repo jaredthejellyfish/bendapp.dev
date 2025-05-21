@@ -1,9 +1,11 @@
 import { betterAuth } from "better-auth";
-import Database from "better-sqlite3";
 import { reactStartCookies } from "better-auth/react-start";
+import { Pool } from "pg";
 
 export const auth = betterAuth({
-  database: new Database("./sqlite.db"),
+  database: new Pool({
+    connectionString: process.env.DATABASE_URL,
+  }),
   user: {
     additionalFields: {
       firstName: {
@@ -40,6 +42,12 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     callbackUrl: "/sign-up/success",
+  },
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // Cache duration in seconds
+    },
   },
   plugins: [reactStartCookies()],
 });

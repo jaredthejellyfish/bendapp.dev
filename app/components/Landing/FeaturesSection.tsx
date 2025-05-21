@@ -1,8 +1,6 @@
-"use client";
-
 import { Brain, Lock } from "lucide-react";
 import { motion } from "motion/react";
-import Icon from "../Icon";
+import Icon from "./Icon";
 const FeaturesSection = () => {
   return (
     <motion.section
@@ -22,7 +20,7 @@ const FeaturesSection = () => {
           repeat: Infinity,
           repeatType: "reverse",
         }}
-        className="absolute top-10 -left-10 w-28 h-28 border border-white/10 rounded-xl bg-white/5 backdrop-blur-sm hidden md:block"
+        className="absolute top-10 -left-10 w-28 h-28 border border-border/10 rounded-xl bg-background/5 backdrop-blur-sm hidden md:block"
       />
 
       <motion.h2
@@ -30,7 +28,7 @@ const FeaturesSection = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-white text-4xl font-bold mb-8"
+        className="text-foreground text-4xl font-bold mb-8"
       >
         Features
       </motion.h2>
@@ -51,22 +49,22 @@ const FeaturesSection = () => {
       >
         {[
           {
-            icon: <Icon className="w-6 h-6 fill-white" />,
+            icon: <Icon className="w-6 h-6 fill-foreground" />,
             title: "Universal Integration",
-            bgColor: "bg-[#FF333D]",
+            bgColor: "bg-primary",
             description:
               "Connect Bend to every aspect of your life—banking, fitness trackers, smart home, calendars, and more.",
           },
           {
-            icon: <Brain className="w-6 h-6 text-white" />,
-            bgColor: "bg-[#6C40FA]",
+            icon: <Brain className="w-6 h-6 text-foreground" />,
+            bgColor: "bg-chart-3",
             title: "Personalized Intelligence",
             description:
               "Bend learns your habits, preferences, and goals to provide tailored recommendations and automate routine tasks.",
           },
           {
-            icon: <Lock className="w-6 h-6 text-white" />,
-            bgColor: "bg-[#20EDC5]/70",
+            icon: <Lock className="w-6 h-6 text-foreground" />,
+            bgColor: "bg-chart-2/70",
             title: "Privacy-First Design",
             description:
               "Your data stays yours with end-to-end encryption and granular control over what information Bend can access.",
@@ -80,7 +78,7 @@ const FeaturesSection = () => {
             }}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#1A1A1A] p-6 rounded-lg hover:shadow-lg hover:shadow-[#FF333D]/10"
+            className="bg-card p-6 rounded-lg hover:shadow-lg hover:shadow-primary/10"
           >
             <div className="flex items-center gap-4">
               <div
@@ -90,11 +88,11 @@ const FeaturesSection = () => {
               >
                 {feature.icon}
               </div>
-              <h3 className="text-white text-xl font-bold mb-3">
+              <h3 className="text-foreground text-xl font-bold mb-3">
                 {feature.title}
               </h3>
             </div>
-            <p className="text-white/80">{feature.description}</p>
+            <p className="text-muted-foreground">{feature.description}</p>
           </motion.div>
         ))}
       </motion.div>
